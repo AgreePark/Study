@@ -1,0 +1,103 @@
+board= [[' ' for x in range (3)] for y in range(3)]
+fin = False
+whoWin = ' '
+
+# 승패 판정
+def win_or_defeat():
+    whoWin = ' '
+    for i in range(3):
+        if board[i][0] == board[i][1] and board[i][1] == board[i][2]:
+            whoWin = board[i][1]
+            fin = True
+            break
+        elif board[0][i] == board[1][i] and board[1][i] == board[2][i]:
+            whoWin = board[1][i]
+            fin = True
+            break
+    if board[0][0] == board[1][1] and board[1][1] == board[2][2]:
+        whoWin = board[1][1]
+        fin = True
+    elif board[2][0] == board[1][1] and board[1][1] == board[0][2]:
+        whoWin = board[1][1]
+        fin = True
+    
+    if fin == True and whoWin == 'X':
+        print("승리했습니다")
+        return 'X'
+    elif fin == True and whoWin == 'O':
+        print("패배했습니다")
+        
+while True:
+    # 게임보드 
+    for r in range(3):
+        print("  " + board[r][0] + "|  " + board[r][1] + "|  " + board[r][2])
+        if (r != 2):
+            print("---|---|---")
+            
+    # 좌표 입력
+    x = int(input("다음 수의 x좌표를 입력하시오: "))
+    y = int(input("다음 수의 y좌표를 입력하시오: "))
+    
+    # 좌표 검사
+    if board[y][x] != ' ':
+        print("잘못된 위치입니다. ")
+        continue
+    else:
+        board[y][x] = 'X'
+    
+    # 승패 판정
+    for i in range(3):
+        if board[i][0] == board[i][1] and board[i][1] == board[i][2]:
+            whoWin = board[i][1]
+            fin = True
+            break
+        elif board[0][i] == board[1][i] and board[1][i] == board[2][i]:
+            whoWin = board[1][i]
+            fin = True
+            break
+    if board[0][0] == board[1][1] and board[1][1] == board[2][2]:
+        whoWin = board[1][1]
+        fin = True
+    elif board[2][0] == board[1][1] and board[1][1] == board[0][2]:
+        whoWin = board[1][1]
+        fin = True
+    
+    if fin == True and whoWin == 'X':
+        print("승리했습니다")
+        exit()
+    elif fin == True and whoWin == 'O':
+        print("패배했습니다")
+        exit()
+    
+    # 컴퓨터 위치 검사,  첫 번째로 발견하는 비어있는 칸에 두기 
+    done = False
+    for i in range(3): 
+        for j in range(3): 
+            if board[i][j] == ' ' and not done:
+                board[i][j] = 'O'
+                done = True
+                break
+    
+    # 승패 판정
+    for i in range(3):
+        if board[i][0] == board[i][1] and board[i][1] == board[i][2]:
+            whoWin = board[i][1]
+            fin = True
+            break
+        elif board[0][i] == board[1][i] and board[1][i] == board[2][i]:
+            whoWin = board[1][i]
+            fin = True
+            break
+    if board[0][0] == board[1][1] and board[1][1] == board[2][2]:
+        whoWin = board[1][1]
+        fin = True
+    elif board[2][0] == board[1][1] and board[1][1] == board[0][2]:
+        whoWin = board[1][1]
+        fin = True
+    
+    if fin == True and whoWin == 'X':
+        print("승리했습니다")
+        exit()
+    elif fin == True and whoWin == 'O':
+        print("패배했습니다")
+        exit()
